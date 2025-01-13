@@ -98,7 +98,9 @@ export const Room = ({
             ? state.hostStream
             : state.clientStreams.find(({id}) => selectedStream === id)?.stream;
 
-    const audioStream = state.clientStreams.find(({id, stream}) => selectedStream === id && stream.getAudioTracks().length != 0 )?.stream;
+    const audioStream = state.clientStreams.find(
+        ({id, stream}) => selectedStream === id && stream.getAudioTracks().length != 0
+    )?.stream;
 
     React.useEffect(() => {
         if (videoElement && videoStream) {
@@ -135,19 +137,22 @@ export const Room = ({
 
     const playAudio = () => {
         if (audioElementRef.current) {
-            audioElementRef.current.play().then(() => {
-                setPlayingAudio(true);
-            }).catch((e) => {
-                console.log('Could not play main audio', e);
-            });
+            audioElementRef.current
+                .play()
+                .then(() => {
+                    setPlayingAudio(true);
+                })
+                .catch((e) => {
+                    console.log('Could not play main audio', e);
+                });
         }
-    }
+    };
     const pauseAudio = () => {
         if (audioElementRef.current) {
             audioElementRef.current.pause();
             setPlayingAudio(false);
         }
-    }
+    };
 
     const toggleAudio = () => {
         if (playingAudio) {
@@ -155,7 +160,7 @@ export const Room = ({
         } else {
             playAudio();
         }
-    }
+    };
 
     const audioButtonVisible = audioStream && selectedStream !== HostStream;
     const controlVisible = showControl || open || hoverControl;
@@ -258,12 +263,7 @@ export const Room = ({
                 </Typography>
             )}
 
-            {audioStream && (
-                <audio
-                    ref={audioElementRef}
-                    style={{ display: 'none' }}
-                />
-            )}
+            {audioStream && <audio ref={audioElementRef} style={{display: 'none'}} />}
 
             {controlVisible && (
                 <Paper className={classes.control} elevation={10} {...setHoverState}>
@@ -299,14 +299,17 @@ export const Room = ({
                             <PeopleIcon fontSize="large" />
                         </Badge>
                     </Tooltip>
-                    {audioButtonVisible && <Tooltip title={playingAudio ? "Mute Audio" : "Hear Audio"} arrow>
-                        <IconButton
-                            onClick={toggleAudio}
-                            size="large"
-                        >
-                            {playingAudio ? <HeadsetIcon fontSize="large" /> : <HeadsetOff fontSize="large" />}
-                        </IconButton>
-                    </Tooltip>}
+                    {audioButtonVisible && (
+                        <Tooltip title={playingAudio ? 'Mute Audio' : 'Hear Audio'} arrow>
+                            <IconButton onClick={toggleAudio} size="large">
+                                {playingAudio ? (
+                                    <HeadsetIcon fontSize="large" />
+                                ) : (
+                                    <HeadsetOff fontSize="large" />
+                                )}
+                            </IconButton>
+                        </Tooltip>
+                    )}
                     <Tooltip title="Fullscreen" arrow>
                         <IconButton
                             onClick={() => handleFullscreen()}
@@ -336,13 +339,13 @@ export const Room = ({
                                 className={classes.smallVideoContainer}
                                 onClick={() => setSelectedStream(client.id)}
                             >
-                                {
-                                    client.stream && <Video
+                                {client.stream && (
+                                    <Video
                                         key={client.id}
                                         src={client.stream}
                                         className={classes.smallVideo}
                                     />
-                                }
+                                )}
                                 <Typography
                                     variant="subtitle1"
                                     component="div"

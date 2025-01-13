@@ -246,7 +246,9 @@ export const useRoom = (config: UIConfig): UseRoom => {
                                             return current;
                                         }
 
-                                        const existingStream = current.clientStreams.find(({id}) => id === sid);
+                                        const existingStream = current.clientStreams.find(
+                                            ({id}) => id === sid
+                                        );
                                         if (existingStream) {
                                             existingStream.stream = stream;
                                             return current;
@@ -255,14 +257,14 @@ export const useRoom = (config: UIConfig): UseRoom => {
                                         return {
                                             ...current,
                                             clientStreams: [
-                                                ...current.clientStreams, 
+                                                ...current.clientStreams,
                                                 {
                                                     id: sid,
                                                     peer_id: peer,
                                                     stream,
-                                                }
-                                            ]
-                                        }
+                                                },
+                                            ],
+                                        };
                                     }),
                             }).then((peer) => (client.current[event.payload.id] = peer));
                             return;
@@ -348,8 +350,8 @@ export const useRoom = (config: UIConfig): UseRoom => {
             video: {frameRate: loadSettings().framerate},
             audio: {
                 echoCancellation: false,
-                noiseSuppression: false
-            }
+                noiseSuppression: false,
+            },
         });
         stream.current?.getVideoTracks()[0].addEventListener('ended', () => stopShare());
         setState((current) => (current ? {...current, hostStream: stream.current} : current));
