@@ -50,12 +50,9 @@ dockers:
     goarch: amd64
     goarm: ""
     image_templates:
-      - "screego/server:amd64-unstable"
-      - "screego/server:amd64-{{ .RawVersion }}"
-      - "screego/server:amd64-{{ .Major }}"
-      - "ghcr.io/screego/server:amd64-unstable"
-      - "ghcr.io/screego/server:amd64-{{ .RawVersion }}"
-      - "ghcr.io/screego/server:amd64-{{ .Major }}"
+      - "beyondgrayzone/screego-server:amd64-unstable"
+      - "beyondgrayzone/screego-server:amd64-{{ .RawVersion }}"
+      - "beyondgrayzone/screego-server:amd64-{{ .Major }}"
     dockerfile: Dockerfile
     build_flag_templates:
       - "--platform=linux/amd64"
@@ -68,12 +65,9 @@ dockers:
     goarch: "386"
     goarm: ""
     image_templates:
-      - "screego/server:386-unstable"
-      - "screego/server:386-{{ .RawVersion }}"
-      - "screego/server:386-{{ .Major }}"
-      - "ghcr.io/screego/server:386-unstable"
-      - "ghcr.io/screego/server:386-{{ .RawVersion }}"
-      - "ghcr.io/screego/server:386-{{ .Major }}"
+      - "beyondgrayzone/screego-server:386-unstable"
+      - "beyondgrayzone/screego-server:386-{{ .RawVersion }}"
+      - "beyondgrayzone/screego-server:386-{{ .Major }}"
     dockerfile: Dockerfile
     build_flag_templates:
       - "--platform=linux/386"
@@ -86,12 +80,9 @@ dockers:
     goarch: arm64
     goarm: ""
     image_templates:
-      - "screego/server:arm64-unstable"
-      - "screego/server:arm64-{{ .RawVersion }}"
-      - "screego/server:arm64-{{ .Major }}"
-      - "ghcr.io/screego/server:arm64-unstable"
-      - "ghcr.io/screego/server:arm64-{{ .RawVersion }}"
-      - "ghcr.io/screego/server:arm64-{{ .Major }}"
+      - "beyondgrayzone/screego-server:arm64-unstable"
+      - "beyondgrayzone/screego-server:arm64-{{ .RawVersion }}"
+      - "beyondgrayzone/screego-server:arm64-{{ .Major }}"
     dockerfile: Dockerfile
     build_flag_templates:
       - "--platform=linux/arm64"
@@ -104,12 +95,9 @@ dockers:
     goarch: arm
     goarm: 7
     image_templates:
-      - "screego/server:armv7-unstable"
-      - "screego/server:armv7-{{ .RawVersion }}"
-      - "screego/server:armv7-{{ .Major }}"
-      - "ghcr.io/screego/server:armv7-unstable"
-      - "ghcr.io/screego/server:armv7-{{ .RawVersion }}"
-      - "ghcr.io/screego/server:armv7-{{ .Major }}"
+      - "beyondgrayzone/screego-server:armv7-unstable"
+      - "beyondgrayzone/screego-server:armv7-{{ .RawVersion }}"
+      - "beyondgrayzone/screego-server:armv7-{{ .Major }}"
     dockerfile: Dockerfile
     build_flag_templates:
       - "--platform=linux/arm/v7"
@@ -122,12 +110,9 @@ dockers:
     goarch: arm
     goarm: 6
     image_templates:
-      - "screego/server:armv6-unstable"
-      - "screego/server:armv6-{{ .RawVersion }}"
-      - "screego/server:armv6-{{ .Major }}"
-      - "ghcr.io/screego/server:armv6-unstable"
-      - "ghcr.io/screego/server:armv6-{{ .RawVersion }}"
-      - "ghcr.io/screego/server:armv6-{{ .Major }}"
+      - "beyondgrayzone/screego-server:armv6-unstable"
+      - "beyondgrayzone/screego-server:armv6-{{ .RawVersion }}"
+      - "beyondgrayzone/screego-server:armv6-{{ .Major }}"
     dockerfile: Dockerfile
     build_flag_templates:
       - "--platform=linux/arm/v6"
@@ -140,12 +125,9 @@ dockers:
     goarch: ppc64le
     goarm: ""
     image_templates:
-      - "screego/server:ppc64le-unstable"
-      - "screego/server:ppc64le-{{ .RawVersion }}"
-      - "screego/server:ppc64le-{{ .Major }}"
-      - "ghcr.io/screego/server:ppc64le-unstable"
-      - "ghcr.io/screego/server:ppc64le-{{ .RawVersion }}"
-      - "ghcr.io/screego/server:ppc64le-{{ .Major }}"
+      - "beyondgrayzone/screego-server:ppc64le-unstable"
+      - "beyondgrayzone/screego-server:ppc64le-{{ .RawVersion }}"
+      - "beyondgrayzone/screego-server:ppc64le-{{ .Major }}"
     dockerfile: Dockerfile
     build_flag_templates:
       - "--platform=linux/ppc64le"
@@ -154,51 +136,27 @@ dockers:
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.version={{.Version}}"
 docker_manifests:
-  - name_template: "ghcr.io/screego/server:unstable"
+  - name_template: "beyondgrayzone/screego-server:unstable"
     image_templates:
-      - "ghcr.io/screego/server:amd64-unstable"
-      - "ghcr.io/screego/server:386-unstable"
-      - "ghcr.io/screego/server:arm64-unstable"
-      - "ghcr.io/screego/server:armv7-unstable"
-      - "ghcr.io/screego/server:armv6-unstable"
-      - "ghcr.io/screego/server:ppc64le-unstable"
-  - name_template: "screego/server:unstable"
+      - "beyondgrayzone/screego-server:amd64-unstable"
+      - "beyondgrayzone/screego-server:386-unstable"
+      - "beyondgrayzone/screego-server:arm64-unstable"
+      - "beyondgrayzone/screego-server:armv7-unstable"
+      - "beyondgrayzone/screego-server:armv6-unstable"
+      - "beyondgrayzone/screego-server:ppc64le-unstable"
+  - name_template: "beyondgrayzone/screego-server:{{ .RawVersion }}"
     image_templates:
-      - "screego/server:amd64-unstable"
-      - "screego/server:386-unstable"
-      - "screego/server:arm64-unstable"
-      - "screego/server:armv7-unstable"
-      - "screego/server:armv6-unstable"
-      - "screego/server:ppc64le-unstable"
-  - name_template: "screego/server:{{ .RawVersion }}"
+      - "beyondgrayzone/screego-server:amd64-{{ .RawVersion }}"
+      - "beyondgrayzone/screego-server:386-{{ .RawVersion }}"
+      - "beyondgrayzone/screego-server:arm64-{{ .RawVersion }}"
+      - "beyondgrayzone/screego-server:armv7-{{ .RawVersion }}"
+      - "beyondgrayzone/screego-server:armv6-{{ .RawVersion }}"
+      - "beyondgrayzone/screego-server:ppc64le-{{ .RawVersion }}"
+  - name_template: "beyondgrayzone/screego-server:{{ .Major }}"
     image_templates:
-      - "screego/server:amd64-{{ .RawVersion }}"
-      - "screego/server:386-{{ .RawVersion }}"
-      - "screego/server:arm64-{{ .RawVersion }}"
-      - "screego/server:armv7-{{ .RawVersion }}"
-      - "screego/server:armv6-{{ .RawVersion }}"
-      - "screego/server:ppc64le-{{ .RawVersion }}"
-  - name_template: "ghcr.io/screego/server:{{ .RawVersion }}"
-    image_templates:
-      - "ghcr.io/screego/server:amd64-{{ .RawVersion }}"
-      - "ghcr.io/screego/server:386-{{ .RawVersion }}"
-      - "ghcr.io/screego/server:arm64-{{ .RawVersion }}"
-      - "ghcr.io/screego/server:armv7-{{ .RawVersion }}"
-      - "ghcr.io/screego/server:armv6-{{ .RawVersion }}"
-      - "ghcr.io/screego/server:ppc64le-{{ .RawVersion }}"
-  - name_template: "screego/server:{{ .Major }}"
-    image_templates:
-      - "screego/server:amd64-{{ .Major }}"
-      - "screego/server:386-{{ .Major }}"
-      - "screego/server:arm64-{{ .Major }}"
-      - "screego/server:armv7-{{ .Major }}"
-      - "screego/server:armv6-{{ .Major }}"
-      - "screego/server:ppc64le-{{ .Major }}"
-  - name_template: "ghcr.io/screego/server:{{ .Major }}"
-    image_templates:
-      - "ghcr.io/screego/server:amd64-{{ .Major }}"
-      - "ghcr.io/screego/server:386-{{ .Major }}"
-      - "ghcr.io/screego/server:arm64-{{ .Major }}"
-      - "ghcr.io/screego/server:armv7-{{ .Major }}"
-      - "ghcr.io/screego/server:armv6-{{ .Major }}"
-      - "ghcr.io/screego/server:ppc64le-{{ .Major }}"
+      - "beyondgrayzone/screego-server:amd64-{{ .Major }}"
+      - "beyondgrayzone/screego-server:386-{{ .Major }}"
+      - "beyondgrayzone/screego-server:arm64-{{ .Major }}"
+      - "beyondgrayzone/screego-server:armv7-{{ .Major }}"
+      - "beyondgrayzone/screego-server:armv6-{{ .Major }}"
+      - "beyondgrayzone/screego-server:ppc64le-{{ .Major }}"
